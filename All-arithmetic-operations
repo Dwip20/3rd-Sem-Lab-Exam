@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Arithmetic Operations</h1>
+    <form id="arithmeticForm">
+        <label for="num1">Enter number 1:</label><br>
+        <input type="number" id="num1" required><br>
+        <label for="num2">Enter number 2:</label><br>
+        <input type="number" id="num2" required><br>
+        <label for="num3">Enter number 3:</label><br>
+        <input type="number" id="num3" required><br>
+        <label for="num4">Enter number 4:</label><br>
+        <input type="number" id="num4" required><br>
+        <button type="button" onclick="performOperations()">Calculate</button>
+    </form>
+    <h2>Results:</h2>
+    <div id="results"></div>
+
+    <script>
+        function performOperations() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const num3 = parseFloat(document.getElementById('num3').value);
+            const num4 = parseFloat(document.getElementById('num4').value);
+
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3) || isNaN(num4)) {
+                alert('Please enter valid numbers in all fields.');
+                return;
+            }
+
+            const addition = num1 + num2 + num3 + num4;
+            const subtraction = num1 - num2 - num3 - num4;
+            const multiplication = num1 * num2 * num3 * num4;
+            const division = (num2 !== 0 && num3 !== 0 && num4 !== 0) ? num1 / num2 / num3 / num4 : 'Division by zero error';
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <p>Addition: ${addition}</p>
+                <p>Subtraction: ${subtraction}</p>
+                <p>Multiplication: ${multiplication}</p>
+                <p>Division: ${division}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

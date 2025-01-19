@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button, select {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Area Calculator</h1>
+    <form id="areaForm">
+        <label for="shape">Select a shape:</label><br>
+        <select id="shape" required>
+            <option value="" disabled selected>Select...</option>
+            <option value="circle">Circle</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="square">Square</option>
+        </select><br>
+
+        <div id="inputs"></div>
+        <button type="button" onclick="calculateArea()">Calculate Area</button>
+    </form>
+
+    <h2>Result:</h2>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('shape').addEventListener('change', function () {
+            const shape = this.value;
+            const inputsDiv = document.getElementById('inputs');
+            inputsDiv.innerHTML = ''; // Clear previous inputs
+
+            switch (shape) {
+                case 'circle':
+                    inputsDiv.innerHTML = `
+                        <label for="radius">Enter the radius of the circle:</label><br>
+                        <input type="number" id="radius" placeholder="Radius" required><br>
+                    `;
+                    break;
+
+                case 'rectangle':
+                    inputsDiv.innerHTML = `
+                        <label for="length">Enter the length of the rectangle:</label><br>
+                        <input type="number" id="length" placeholder="Length" required><br>
+                        <label for="width">Enter the width of the rectangle:</label><br>
+                        <input type="number" id="width" placeholder="Width" required><br>
+                    `;
+                    break;
+
+                case 'square':
+                    inputsDiv.innerHTML = `
+                        <label for="side">Enter the side of the square:</label><br>
+                        <input type="number" id="side" placeholder="Side" required><br>
+                    `;
+                    break;
+
+                default:
+                    break;
+            }
+        });
+
+        function calculateArea() {
+            const shape = document.getElementById('shape').value;
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = ''; // Clear previous results
+
+            switch (shape) {
+                case 'circle':
+                    const radius = parseFloat(document.getElementById('radius').value);
+                    if (isNaN(radius) || radius <= 0) {
+                        alert('Please enter a valid positive radius.');
+                        return;
+                    }
+                    const circleArea = Math.PI * Math.pow(radius, 2);
+                    resultDiv.innerHTML = `<p>The area of the circle is: ${circleArea.toFixed(2)}</p>`;
+                    break;
+
+                case 'rectangle':
+                    const length = parseFloat(document.getElementById('length').value);
+                    const width = parseFloat(document.getElementById('width').value);
+                    if (isNaN(length) || length <= 0 || isNaN(width) || width <= 0) {
+                        alert('Please enter valid positive values for length and width.');
+                        return;
+                    }
+                    const rectangleArea = length * width;
+                    resultDiv.innerHTML = `<p>The area of the rectangle is: ${rectangleArea.toFixed(2)}</p>`;
+                    break;
+
+                case 'square':
+                    const side = parseFloat(document.getElementById('side').value);
+                    if (isNaN(side) || side <= 0) {
+                        alert('Please enter a valid positive side length.');
+                        return;
+                    }
+                    const squareArea = Math.pow(side, 2);
+                    resultDiv.innerHTML = `<p>The area of the square is: ${squareArea.toFixed(2)}</p>`;
+                    break;
+
+                default:
+                    alert('Please select a shape.');
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

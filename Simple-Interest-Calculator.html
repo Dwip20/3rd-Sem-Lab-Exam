@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Interest Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Interest Calculator</h1>
+    <form id="interestForm">
+        <label for="principal">Enter Principal Amount (P):</label><br>
+        <input type="number" id="principal" placeholder="Enter principal" required><br>
+        
+        <label for="rate">Enter Rate of Interest (R%):</label><br>
+        <input type="number" id="rate" placeholder="Enter rate (%)" required><br>
+        
+        <label for="time">Enter Time (T in years):</label><br>
+        <input type="number" id="time" placeholder="Enter time (years)" required><br>
+        
+        <button type="button" onclick="calculateSimpleInterest()">Calculate Interest</button>
+    </form>
+
+    <h2>Result:</h2>
+    <div id="result"></div>
+
+    <script>
+        function calculateSimpleInterest() {
+            // Retrieve input values
+            const principal = parseFloat(document.getElementById('principal').value);
+            const rate = parseFloat(document.getElementById('rate').value);
+            const time = parseFloat(document.getElementById('time').value);
+
+            // Validate inputs
+            if (isNaN(principal) || principal <= 0 || isNaN(rate) || rate <= 0 || isNaN(time) || time <= 0) {
+                alert('Please enter valid positive numbers for all fields.');
+                return;
+            }
+
+            // Calculate simple interest
+            const simpleInterest = (principal * rate * time) / 100;
+
+            // Display the result
+            document.getElementById('result').innerHTML = `
+                <p>The Simple Interest is: ${simpleInterest.toFixed(2)}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

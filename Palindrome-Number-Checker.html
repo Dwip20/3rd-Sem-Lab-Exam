@@ -1,45 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palindrome Number Checker</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        input, button {
-            margin: 10px 0;
-        }
-    </style>
 </head>
 <body>
     <h1>Palindrome Number Checker</h1>
     <form id="palindromeForm">
-        <label for="number">Enter a number:</label><br>
-        <input type="number" id="number" required><br>
+        <input type="number" id="number" placeholder="Enter a number"><br>
         <button type="button" onclick="checkPalindrome()">Check</button>
     </form>
-
     <h2>Result:</h2>
     <div id="result"></div>
-
     <script>
         function checkPalindrome() {
-            // Get the number from the input field
             const num = document.getElementById('number').value;
-
-            // Validate the input (ensure the number is not empty)
             if (num === "") {
                 document.getElementById('result').innerHTML = `<p>Please enter a number.</p>`;
                 return;
             }
-
-            // Convert number to string and check if it is the same when reversed
             const reversedNum = num.split('').reverse().join('');
-            
-            // Check if the original number is the same as the reversed number
             if (num === reversedNum) {
                 document.getElementById('result').innerHTML = `<p>${num} is a palindrome number.</p>`;
             } else {

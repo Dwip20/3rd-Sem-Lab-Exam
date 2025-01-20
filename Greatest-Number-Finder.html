@@ -1,22 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greatest Number Finder</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        input, button {
-            margin: 10px 0;
-        }
-    </style>
 </head>
 <body>
     <h1>Find the Greatest Number</h1>
-
     <h2>Greatest of 5 Numbers</h2>
     <form id="fiveNumbersForm">
         <label for="num1">Enter number 1:</label><br>
@@ -32,60 +19,25 @@
         <button type="button" onclick="findGreatestOfFive()">Find Greatest of 5</button>
     </form>
 
-    <h2>Greatest of 3 Numbers</h2>
-    <form id="threeNumbersForm">
-        <label for="num6">Enter number 1:</label><br>
-        <input type="number" id="num6" required><br>
-        <label for="num7">Enter number 2:</label><br>
-        <input type="number" id="num7" required><br>
-        <label for="num8">Enter number 3:</label><br>
-        <input type="number" id="num8" required><br>
-        <button type="button" onclick="findGreatestOfThree()">Find Greatest of 3</button>
-    </form>
-
-    <h2>Result:</h2>
-    <div id="result"></div>
-
     <script>
         function findGreatestOfFive() {
-            // Get input values for the five numbers
+            
             const num1 = parseFloat(document.getElementById('num1').value);
             const num2 = parseFloat(document.getElementById('num2').value);
             const num3 = parseFloat(document.getElementById('num3').value);
             const num4 = parseFloat(document.getElementById('num4').value);
             const num5 = parseFloat(document.getElementById('num5').value);
 
-            // Validate inputs
             if (isNaN(num1) || isNaN(num2) || isNaN(num3) || isNaN(num4) || isNaN(num5)) {
                 alert('Please enter valid numbers for all fields.');
                 return;
             }
 
-            // Find the greatest number among the five
             const greatestOfFive = Math.max(num1, num2, num3, num4, num5);
 
-            // Display the result for the greatest of five
             document.getElementById('result').innerHTML = `<p>The greatest number among the five is: ${greatestOfFive}</p>`;
         }
-
-        function findGreatestOfThree() {
-            // Get input values for the three numbers
-            const num6 = parseFloat(document.getElementById('num6').value);
-            const num7 = parseFloat(document.getElementById('num7').value);
-            const num8 = parseFloat(document.getElementById('num8').value);
-
-            // Validate inputs
-            if (isNaN(num6) || isNaN(num7) || isNaN(num8)) {
-                alert('Please enter valid numbers for all fields.');
-                return;
-            }
-
-            // Find the greatest number among the three
-            const greatestOfThree = Math.max(num6, num7, num8);
-
-            // Display the result for the greatest of three
-            document.getElementById('result').innerHTML = `<p>The greatest number among the three is: ${greatestOfThree}</p>`;
-        }
+}
     </script>
 </body>
 </html>
